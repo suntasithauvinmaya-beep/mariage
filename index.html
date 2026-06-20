@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariage Anne & Laurent</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@200;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #faece6; /* Vrai Rose Pâle Poudré, doux et chaleureux */
+            color: #2c2c2c;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        /* --- ÉCRAN D'ENTRÉE --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Dégradé subtil qui se fond vers le rose pâle en haut de l'image */
+            background-image: linear-gradient(to bottom, rgba(250, 236, 230, 0.7) 0%, rgba(250, 236, 230, 0.2) 30%, rgba(250, 236, 230, 0) 60%), url('images/rooftop.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 9999;
+            box-sizing: border-box;
+            padding-top: 60px;
+            transition: opacity 1s ease, visibility 1s;
+        }
+
+        #intro-overlay h2 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin: 0 0 25px 0;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            letter-spacing: 6px;
+        }
+
+        .enter-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background-color: rgba(250, 236, 230, 0.95); /* Fond du bouton légèrement rosé */
+            border: 1px solid #1a1a1a;
+            padding: 16px 50px;
+            cursor: pointer;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .enter-btn:hover {
+            background-color: #1a1a1a;
+            color: #faece6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            margin: 40px 0;
+        }
+
+        nav a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            text-decoration: none;
+            color: #2c2c2c;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 25px;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #777;
+        }
+
+        /* --- EN-TÊTE PRINCIPALE --- */
+        header {
+            padding: 60px 20px 10px 20px;
+        }
+
+        header h1 {
+            font-size: 3.8rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        header .sub-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            color: #555;
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+        }
+
+        header .date {
+            font-size: 1.1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        /* --- PHOTOS ENCORE PLUS ARRONDIES AVEC CADRE --- */
+        .photo-container {
+            max-width: 550px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px; /* Arrondi prononcé et doux */
+            border: 1px solid #ebd3c8; /* Cadre fin adapté au fond rose poudré */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            box-sizing: border-box;
+        }
+
+        /* --- SECTIONS TEXTE --- */
+        section {
+            max-width: 600px;
+            margin: 0 auto 100px auto;
+            padding: 0 20px;
+            scroll-margin-top: 30px;
+        }
+
+        section h2 {
+            font-size: 2.4rem;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        section h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background-color: #d9beaf;
+            margin: 20px auto 0 auto;
+        }
+
+        .info-block {
+            margin-bottom: 50px;
+        }
+
+        .info-block h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .info-block p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 300;
+        }
+
+        footer {
+            padding: 80px 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #666;
+            border-top: 1px solid #ebd3c8;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="intro-overlay">
+        <h2>Anne & Laurent</h2>
+        <button class="enter-btn" onclick="startSite()">Découvrir</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="musique.mp3" type="audio/mpeg">
+    </audio>
+
+    <header id="accueil">
+        <h1>Anne & Laurent</h1>
+        <p class="sub-text">sont heureux de vous convier à leur mariage</p>
+        <p class="date">Samedi 7 Novembre 2026</p>
+    </header>
+
+    <nav>
+        <a href="#programme">Le Programme</a>
+        <a href="#informations">Informations</a>
+    </nav>
+
+
+    <div class="photo-container">
+        <img src="images/lac.jpg" alt="Anne & Laurent - Le Programme">
+    </div>
+
+    <section id="programme">
+        <h2>Le Programme</h2>
+        
+        <div class="info-block">
+            <h3>La Célébration & La Fête</h3>
+            <p><strong>Le Fief des Cordeliers</strong><br>
+            Montjean sur Loire (49)</p>
+        </div>
+
+        <div class="info-block">
+            <h3>Les Horaires</h3>
+            <p> A COMPLETER </p>
+        </div>
+    </section>
+
+
+    <div class="photo-container">
+        <img src="images/complicite.jpg" alt="Anne & Laurent - Informations">
+    </div>
+
+    <section id="informations">
+        <h2>Informations</h2>
+
+        <div class="info-block">
+            <h3>Hébergements</h3>
+            <p><strong>Bonne nouvelle !</strong><br>
+            Un hébergement est possible directement sur place, <strong>sans frais</strong>, jusqu'au lundi matin.</p>
+        </div>
+
+        <div class="info-block">
+            <h3>Dress Code</h3>
+            <p>Une tenue de cocktail élégante aux couleurs pastel.</p>
+        </div>
+
+        <div class="info-block">
+            <h3>Confirmations</h3>
+            <p>Merci de bien vouloir confirmer votre présence avant le <strong>15 avril 2026</strong>.<br>
+            Contact : 06.72.84.88.37 — </p>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>Nous avons hâte de célébrer ce moment avec vous.</p>
+    </footer>
+
+    <script>
+        function startSite() {
+            window.scrollTo(0, 0);
+
+            var music = document.getElementById("bgMusic");
+            music.play().catch(function(error) {
+                console.log("Audio en attente ou bloqué par le navigateur");
+            });
+
+            var overlay = document.getElementById("intro-overlay");
+            overlay.style.opacity = "0";
+            setTimeout(function() {
+                overlay.style.visibility = "hidden";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
